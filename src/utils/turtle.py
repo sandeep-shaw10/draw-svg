@@ -3,13 +3,13 @@ import ast
 import turtle
 from utils.tags.path import lineCommand
 
-PATH = 'x.txt'
+
 INVERT = -1
 
 
 def circle(attr, width, height):
     cx, cy, r, stroke, stroke_width, fill = attr['cx'], attr['cy'], attr['r'], attr['stroke'], attr['stroke-width'], attr['fill']
-    print(cx,cy,r,stroke, stroke_width, fill)
+    # print(cx,cy,r,stroke, stroke_width, fill)
     turtle.pu()
     turtle.goto(cx,cy-r)
     turtle.pd()
@@ -19,12 +19,12 @@ def circle(attr, width, height):
     turtle.circle(r)
     turtle.end_fill()
     turtle.pu()
-    print(width, height)
+    # print(width, height)
 
 
 def line(attr):
     x1, y1, x2, y2, stroke, stroke_width = attr['x1'], attr['y1'], attr['x2'], attr['y2'],attr['stroke'], attr['stroke-width']
-    print(type(x1),y1,x2,y2,stroke, stroke_width)
+    # print(type(x1),y1,x2,y2,stroke, stroke_width)
     turtle.pu()
     turtle.goto(x1,y1)
     turtle.pd()
@@ -36,7 +36,7 @@ def line(attr):
 
 def polyline(attr):
     points, stroke, stroke_width = attr['points'],attr['stroke'], attr['stroke-width']
-    print(points, stroke, stroke_width)
+    # print(points, stroke, stroke_width)
     pointer = list(filter(None, points.split(' ')))
     turtle.pu()
     turtle.color(stroke)
@@ -55,7 +55,7 @@ def polyline(attr):
 
 def polygon(attr):
     points, stroke, stroke_width, fill = attr['points'],attr['stroke'], attr['stroke-width'], attr['fill']
-    print(type(points), stroke, stroke_width, fill)
+    # print(type(points), stroke, stroke_width, fill)
     pointer = list(filter(None, points.split(' ')))
     if(len(pointer) > 2):
         turtle.pu()
@@ -82,7 +82,7 @@ def polygon(attr):
 
 def rect(attr):
     x, y, width, height, stroke, stroke_width, fill = attr['x'], attr['y'], attr['width'], attr['height'], attr['stroke'], attr['stroke-width'], attr['fill']
-    print(type(x), y, width, height, stroke, stroke_width, fill)
+    # print(type(x), y, width, height, stroke, stroke_width, fill)
     turtle.pu()
     turtle.goto(x,y)
     turtle.pd()
@@ -133,6 +133,30 @@ def path(attr):
     turtle.pu()
 
 
+def speed(attr):
+    speedVal = int(attr)
+    if(speedVal >= 0 and speedVal <= 10):
+        turtle.speed(speedVal)
+    else:
+        turtle.speed(speedVal%11)
+
+
+def setTitle(attr):
+    turtle.title(attr)
+
+
+def setBackgroundColor(attr):
+    turtle.bgcolor(attr)
+
+
+def hideTurtle(attr):
+    if attr in [1, True, '1', 'True']:
+        turtle.hideturtle()
+    else:
+        turtle.showturtle()
+
+
+
 def compileSVG(filePath):
 
     cmds = simpleReadFile(filePath)
@@ -167,6 +191,14 @@ def compileSVG(filePath):
                 rect(attr)
             elif(tag == "path"):
                 path(attr)
+            elif(tag == "speed"):
+                speed(attr)
+            elif(tag == "title"):
+                setTitle(attr)
+            elif(tag == "bg"):
+                setBackgroundColor(attr)
+            elif(tag == "ht"):
+                hideTurtle(attr)
             else:
                 raise Exception(f'Extraction of tag {tag} in turtle.py not present')
 
