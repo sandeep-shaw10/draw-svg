@@ -1,6 +1,7 @@
 import regex as re
 from utils.svg import extractTag
 from utils.file import appendFile, writeFile
+from utils.tags.text import modifyText
 
 
 def makeTag(tagName):
@@ -9,7 +10,9 @@ def makeTag(tagName):
 
 # Extract valid svg tagSvg
 def extractSVG(data, filePath):
-    tagSvg = ['path','circle','polygon','polyline','rect','line']
+    tagSvg = ['path','circle','polygon','polyline','rect','line','text']
+
+    data = modifyText(data)
 
     cmdRegex = ''
     for i in range(0,len(tagSvg)):
@@ -19,11 +22,12 @@ def extractSVG(data, filePath):
             cmdRegex += f'{makeTag(tagSvg[i])}|'
 
     patterns = re.search(cmdRegex,data)
+
     if patterns:
         for pattern in re.finditer(cmdRegex,data):
             tag = re.search('(?<=\<)\w+', pattern[0])
             [data_tag, data_attr] = extractTag(tag[0], pattern[0])
-            writeFile(f'{data_tag}={data_attr}', filePath)
+            writeFile(f'{data_tag}={data_attr}\n', filePath)
 
 
 # Validify SVG and get width and height

@@ -4,7 +4,11 @@ from utils.file import appendFile
 
 def generatorEngine(tag, attrs, data, value):
     for attr, dataType in attrs.items():
-        if(dataType == float):
+        if(dataType == int):
+            num = re.search(f'(?<=\s*{attr}\s*=\s*\")\d*?.\d*?(?=\")',value)
+            if num:
+                data[attr] = int(num[0])
+        elif(dataType == float):
             num = re.search(f'(?<=\s*{attr}\s*=\s*\")\d*?.\d*?(?=\")',value)
             if num:
                 data[attr] = float(num[0])
@@ -69,6 +73,12 @@ def circle(value):
     return generatorEngine("circle", attrs, data, value)
 
 
+def text(value):
+    attrs = { "x": float,  "y": float,  "font-size": int,  "font-family": str,  "font-style": str,  "fill": str, "data": str }
+    data = { "x": 0,  "y": 0,  "font-size": 16,  "font-family": "sans-serif",  "font-style": "normal",  "fill": "#434343", "data": "" }
+    return generatorEngine("text", attrs, data, value)
+
+
 # identify tags
 def extractTag(tag, value):
     if(tag == "line"):
@@ -83,5 +93,7 @@ def extractTag(tag, value):
         return polygon(value)
     elif(tag == "path"):
         return path(value)
+    elif(tag == "text"):
+        return text(value)
     else:
         raise Exception(f'Unable to parse {tag}')

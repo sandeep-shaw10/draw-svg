@@ -2,6 +2,7 @@ from utils.file import simpleReadFile
 import ast
 import turtle
 from utils.tags.path import lineCommand
+from utils.tags.text import initText
 
 
 INVERT = -1
@@ -104,7 +105,13 @@ def rect(attr):
 def path(attr):
     d, stroke, stroke_width, fill = attr['d'],attr['stroke'], attr['stroke-width'], attr['fill']
     # print(type(d), stroke, stroke_width, fill)
-    data = lineCommand(d)
+
+    #Additional manipulation
+    steps = 100
+    if "steps" in attr:
+        steps = int(attr["steps"])
+
+    data = lineCommand(d, steps)
 
     turtle.pu()
     turtle.color(stroke,fill)
@@ -130,6 +137,18 @@ def path(attr):
             turtle.goto(i['value'][0], i['value'][1])
 
     turtle.end_fill()
+    turtle.pu()
+
+
+def text(attr):
+    x, y, fontSize, fontFamily, fontStyle, fill, data = attr['x'], attr['y'], attr['font-size'], attr['font-family'], attr['font-style'], attr['fill'], attr['data']
+    [move, align] = initText()
+    font = (fontFamily, fontSize, fontStyle)
+    turtle.pu()
+    turtle.goto(x,y)
+    turtle.pd()
+    turtle.color(fill)
+    turtle.write(data, move=move, font=font, align=align)
     turtle.pu()
 
 
@@ -199,6 +218,8 @@ def compileSVG(filePath):
                 setBackgroundColor(attr)
             elif(tag == "ht"):
                 hideTurtle(attr)
+            elif(tag == "text"):
+                text(attr)
             else:
                 raise Exception(f'Extraction of tag {tag} in turtle.py not present')
 

@@ -10,5 +10,4 @@
     - `Q`
     - `S`
     - `T`
-- [ ] Add Text using python turtle write function
 - [ ] Working with Group `<g>...</g>` to add the attributes of group into each child member 

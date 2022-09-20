@@ -5,10 +5,6 @@ from utils.regex import extractDim
 from utils.turtle import compileSVG
 
 
-
-
-
-
 #Regex Test
 if(__name__ == "__main__"):
 
@@ -26,6 +22,7 @@ if(__name__ == "__main__"):
                 outPath = f"new-file-{timeUID}.txt"
             val = readFile(inPath)
             extractDim(val, outPath)
+            compileSVG(outPath)
 
         
         elif command in ['decode','1']:
@@ -43,29 +40,3 @@ if(__name__ == "__main__"):
 
         else:
             print('About Project')
-
-    exit()
-
-
-    loop = True
-    draw = TurtleSVG()
-
-
-    print("\n\nEnter Option: ")
-    print("1) Decode SVG")
-    print("2) Run SVG")
-    print("3) Decode and Run SVG")
-    print("*) Any other Key to Exit")
-    choice = input('Enter your Choice: ')
-    if(choice == "1"):
-        print("Only Decode")
-        draw.runTurtle()
-    elif(choice == "2"):
-        print("Only Execute")
-        draw.executeTurtle()   
-    elif(choice == "3"):
-        draw.runTurtle()
-        draw.executeTurtle()
-    else:
-        loop = False
-        print("\n====EXIT====")

@@ -7,7 +7,7 @@ from utils.maths.curve import bezeirCurve
 \s*\-?\d+\.?\d*\s*\,?\s*(\-?\d+|\d*)\.?\d*)
 '''
 
-# line commans
+# line commands
 m = '((M|m|l|L)\s*(\-?\d+|\d*)\.?\d*\s*\,?\s*(\-?\d+|\d*)\.?\d*)' #moveTo
 # l = '((L|l)\s*\-?\d+\.?\d*\s*\,?\s*\-?\d+\.?\d*)' # Line
 hv = '((h|H|v|V)\s*\d+\.?\d+)'          #horizontal and vertical 
@@ -27,11 +27,11 @@ def strFloatList(pattern):
 
 
 
-def lineCommand(d):
+def lineCommand(d, steps=100):
     regexCMD = f'{m}|{hv}|{c}|{z}'
     d = d.replace('-.','-0.')
     patterns = re.search(regexCMD,d)
-    print(d)
+    # print(d)
 
     data = list()       # List of command
     ref_x, ref_y = 0,0  # For relavtive command
@@ -48,11 +48,11 @@ def lineCommand(d):
             # moveTo
             if(cmdVal == 'm' or cmdVal == 'M'):
                 point = strFloatList(pattern[0])
-                print('MOVE TO ',point)
+                # print('MOVE TO ',point)
                 data.append({ "cmd":"m", "value":point})
                 start_x, start_y = point[0], point[1]
                 ref_x, ref_y = start_x, start_y
-                print(ref_x,ref_y)
+                # print(ref_x,ref_y)
 
             # l : relative: lineTo
             if(cmdVal == 'l'):
@@ -95,14 +95,14 @@ def lineCommand(d):
             # c : relative: Bézier Curves
             if(cmdVal == 'c'):
                 point = strFloatList(pattern[0])
-                print(point, pattern[0])
+                # print(point, pattern[0])
                 pt1 = [ref_x, ref_y]
                 pt2 = [ref_x + point[0], ref_y + point[1]]
                 pt3 = [ref_x + point[2], ref_y + point[3]]
                 pt4 = [ref_x + point[4], ref_y + point[5]]
                 ref_x += point[4]
                 ref_y += point[5]
-                plot = bezeirCurve(pt1, pt2, pt3, pt4, 100)
+                plot = bezeirCurve(pt1, pt2, pt3, pt4, steps)
                 plot = plot.getPoint()
                 data.append({ "cmd":"c", "value": plot})
 
@@ -114,12 +114,12 @@ def lineCommand(d):
                 pt3 = [point[2],point[3]]
                 pt4 = [point[4],point[5]]
                 ref_x, ref_y = point[4], point[5]
-                plot = bezeirCurve(pt1, pt2, pt3, pt4, 10)
+                plot = bezeirCurve(pt1, pt2, pt3, pt4, steps)
                 plot = plot.getPoint()
                 data.append({ "cmd":"c", "value": plot})       
             
 
             # data.append(pattern[0])
-    print(data)
+    # print(data)
     return data
     
