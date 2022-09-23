@@ -8,7 +8,7 @@ from utils.tags.text import initText
 INVERT = -1
 
 
-def circle(attr, width, height):
+def circle(attr):
     cx, cy, r, stroke, stroke_width, fill = attr['cx'], attr['cy'], attr['r'], attr['stroke'], attr['stroke-width'], attr['fill']
     # print(cx,cy,r,stroke, stroke_width, fill)
     turtle.pu()
@@ -199,7 +199,7 @@ def compileSVG(filePath):
             attr = ast.literal_eval(data[1])
             # print(tag, attr)
             if(tag == "circle"):
-                circle(attr, width, height)
+                circle(attr)
             elif(tag == "line"):
                 line(attr)
             elif(tag == "polyline"):

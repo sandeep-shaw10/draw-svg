@@ -1,0 +1,6 @@
+[Svg Draw v1.0,840,320,False]
+text={'x': 20.0, 'y': 135.0, 'font-size': 13, 'font-family': 'sans-serif', 'font-style': 'normal', 'fill': '#434343', 'data': 'my'}
+text={'x': 40.0, 'y': 135.0, 'font-size': 30, 'font-family': 'sans-serif', 'font-style': 'bold', 'fill': '#434343', 'data': 'cat'}
+text={'x': 55.0, 'y': 155.0, 'font-size': 13, 'font-family': 'sans-serif', 'font-style': 'italic', 'fill': '#434343', 'data': 'is'}
+text={'x': 65.0, 'y': 155.0, 'font-size': 40, 'font-family': 'serif', 'font-style': 'italic', 'fill': 'red', 'data': 'Grumpy!'}
+text={'x': 265.0, 'y': 155.0, 'font-size': 40, 'font-family': 'serif', 'font-style': 'italic', 'fill': 'red', 'data': 'শুভ দুর্গাপূজা'}
