@@ -1,3 +1,7 @@
+# Virtual Environment
 venv-svg
+venv
+
+# Python Caches Files
 __pycache__
 *.pyc
