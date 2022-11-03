@@ -1,6 +1,0 @@
-[SVG Hai Bahi ,240,80,1]
-speed=5
-text={'write':'My', 'move':'False', 'align':'center', 'fontName':'sans-serif', 'fontSize':'13', 'fontType':'italic', 'x':'20', 'y':'35', 'color':'black'}
-text={'write':'cat', 'move':'False', 'align':'center', 'fontName':'sans-serif', 'fontSize':'30', 'fontType':'bold', 'x':'40', 'y':'35'}
-text={'write':'is', 'move':'False', 'align':'center', 'fontName':'sans-serif', 'fontSize':'13', 'fontType':'italic', 'x':'55', 'y':'55'}
-text={'write':'Grumpy!', 'move':'False', 'align':'center', 'fontName':'serif', 'fontSize':'40', 'fontType':'italic', 'x':'65', 'y':'55', 'color':'red'}
