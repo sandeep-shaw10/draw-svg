@@ -1,5 +1,5 @@
 <p align="center">
-	<img alt="draw svg" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png" width="180">
+	<img alt="draw svg" src="./public/logo.png" width="180">
 	<h2 align="center">DRAW SVG</h2>
 </p>
 
@@ -21,7 +21,8 @@ Minimal SVG using Python Turtle
 
 <br/><br/>
 
-![SVG](./path.svg)
+![SVG](./public/logo-drawsvg.png)
+
 
 
 # Getting Started 🐢
