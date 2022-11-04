@@ -59,8 +59,8 @@ def rect(value):
 
 
 def path(value):
-    attrs = { "d": str, "stroke": str, "stroke-width": float, "fill": str }
-    data = { "d": "M 10 10 C 20 20, 40 20, 50 10",  "stroke": "white",  "stroke-width": 1, "fill": "white" }
+    attrs = { "d": str, "stroke": str, "stroke-width": float, "fill": str, "steps": int }
+    data = { "d": "M 10 10 C 20 20, 40 20, 50 10",  "stroke": "white",  "stroke-width": 1, "fill": "white", "steps": 100 }
     return generatorEngine("path", attrs, data, value)
 
 
