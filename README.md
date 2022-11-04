@@ -25,12 +25,12 @@ Minimal SVG using Python Turtle
 
 
 # Getting Started 🐢
-- [Setup](#setup-⚙️)
-- [Running Command](#running-command-🤖)
-- [Convert SVG to Python Turtle](#convert-svg-to-python-turtle-🔄)
-- [Customizing](#customizing-🔧)
-- [Shape Generation](#shape-generation-🔶)
-- [Unsupported](#unsupported-⚠️)
+- [Setup](#setup-%EF%B8%8F)
+- [Running Command](#running-command-)
+- [Convert SVG to Python Turtle](#convert-svg-to-python-turtle-)
+- [Customizing](#customizing-)
+- [Shape Generation](#shape-generation-)
+- [Unsupported](#unsupported-%EF%B8%8F)
 
 <br/>
 
@@ -127,7 +127,7 @@ path={'d': 'M99 117C96.7909 117 95 118.791 95 121V148.939C94.3386 148.979 93.671
 
 **5. Output**
 
-![python turtle output for demo](./public/demo_py.JPG)
+![python turtle output for demo](./public/demo_py.jpg)
 
 **6. Customization**
 
@@ -189,7 +189,7 @@ demo
 
 **9. Output**
 
-[![demo_py2](./public/demo_py2.JPG)](./public/demo_py2.JPG)
+[![demo_py2](./public/demo_py2.jpg)](./public/demo_py2.jpg)
 
 <br/>
 
